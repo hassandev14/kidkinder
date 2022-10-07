@@ -4,6 +4,7 @@
  include 'head.php';
  include 'admin/db.php';
  $teachers_data = mysqli_query("select * from teacher", $conn);
+ //comment
  ?>
 
     <!-- Header Start -->
