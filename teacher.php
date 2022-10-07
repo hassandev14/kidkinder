@@ -2,6 +2,8 @@
 <html lang="en">
  <?php
  include 'head.php';
+ include 'admin/db.php';
+ $teachers_data = mysqli_query("select * from teacher", $conn);
  ?>
 
     <!-- Header Start -->
