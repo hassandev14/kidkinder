@@ -78,7 +78,7 @@ button:hover {
 ?>
 <form action="function.php" style="border:1px solid #ccc" enctype="multipart/form-data" method="POST">
   <div class="container">
-    <h2>Add Teacher Detail.</h2>
+    <h2>Edit Teacher Detail.</h2>
     <hr>
 
     <label for="Teacher Name"><b>Teacher Name</b></label>
@@ -89,10 +89,11 @@ button:hover {
 
     <label for="Image"><b>Add Image</b></label>
     <input type="file" placeholder="Add Image" name="image" >
+    <input type="hidden" name="id" >
 
     <div class="clearfix">
-      <button type="button" class="cancelbtn">Cancel</button>
-      <button type="submit" class="signupbtn">Submit</button>
+      <button type="button" class="cancelbtn" name="cencel">Cancel</button>
+      <button type="submit" class="signupbtn">Update</button>
     </div>
   </div>
 </form>

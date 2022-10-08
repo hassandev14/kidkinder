@@ -3,9 +3,9 @@
  <?php
  include 'head.php';
  include 'admin/db.php';
- $teachers_data = mysqli_query("select * from teacher", $conn);
- //comment
- //rashid change
+ $ob_data = $conn->query("select * from teacher");
+ $objects = get_db_data($ob_data);
+ $num_of_objects = count($objects);
  ?>
 
     <!-- Header Start -->
@@ -33,14 +33,19 @@
           </p>
           <h1 class="mb-4">Meet Our Teachers</h1>
         </div>
-        <div class="row">
-          <!--teacher div start from here -->
-        <div class="col-md-6 col-lg-3 text-center team mb-5">
+ <div class="row">
+ <?php
+          if($num_of_objects > 0)
+          { 
+            foreach($objects as $object)
+            {
+            ?>
+          <div class="col-md-6 col-lg-3 text-center team mb-5">
             <div
               class="position-relative overflow-hidden mb-4"
               style="border-radius: 100%"
             >
-              <img class="img-fluid w-100" src="img/team-1.jpg" alt="" />
+              <img class="img-fluid w-100" src="<?php echo "admin/teachers_images/".$object["image_name"]?>" alt="" />
               <div
                 class="team-social d-flex align-items-center justify-content-center w-100 h-100 position-absolute"
               >
@@ -64,12 +69,16 @@
                 ></a>
               </div>
             </div>
-            <h4>Julia Smith</h4>
-            <i>Music Teacher</i>
+            <h4><?php echo $object["teacher_name"]?></h4>
+            <i><?php echo $object["teacher_subject"]?>Teacher</i>
           </div>
+          <?php
+            }
+      }else{
+            echo "no record found";
+      }
+      ?>
         </div>
-      </div>
-    </div>
     <!-- Team End -->
 
     <!-- Testimonial Start -->
