@@ -1,102 +1,82 @@
-<!DOCTYPE html>
-<html>
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-* {box-sizing: border-box}
-
-/* Full-width input fields */
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
-}
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
-}
-
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-}
-
-/* Set a style for all buttons */
-button {
-  background-color: #04AA6D;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
-}
-
-button:hover {
-  opacity:1;
-}
-
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
-}
-
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-  float: left;
-  width: 50%;
-}
-
-/* Add padding to container elements */
-.container {
-  padding: 16px;
-}
-
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
-     width: 100%;
-  }
-}
-</style>
-<body>
-<?php
-
-
+<!-- Start right Content here -->
+<?php include_once('header.php');
+ if(isset($_REQUEST["teacher_id"]))
+ {  
+   $teacher_id = $_REQUEST["teacher_id"];
+   $ob = update_teacher($teacher_id);
+  //dd($teacher_id);
+ }
 ?>
-<form action="function.php" style="border:1px solid #ccc" enctype="multipart/form-data" method="POST">
-  <div class="container">
-    <h2>Edit Teacher Detail.</h2>
-    <hr>
+<!-- Start right Content here -->
 
-    <label for="Teacher Name"><b>Teacher Name</b></label>
-    <input type="text" placeholder="Enter Teacher Name" name="teacher_name">
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
 
-    <label for="Teacher Subject"><b>Teacher Subject</b></label>
-    <input type="text" placeholder="Enter Teacher Subject" name="teacher_subject">
+                    <div class="">
+                        <div class="page-header-title">
+                            <h4 class="page-title">Teachers </h4>
+                        </div>
+                    </div>
 
-    <label for="Image"><b>Add Image</b></label>
-    <input type="file" placeholder="Add Image" name="image" >
-    <input type="hidden" name="id" >
+                    <div class="page-content-wrapper ">
 
-    <div class="clearfix">
-      <button type="button" class="cancelbtn" name="cencel">Cancel</button>
-      <button type="submit" class="signupbtn">Update</button>
-    </div>
-  </div>
-</form>
+                        <div class="container-fluid">
+                        <form action="teachers.php" style="border:1px solid #ccc" enctype="multipart/form-data" method="POST">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="m-t-0 m-b-30">Add Teachers</h4>
 
-</body>
-</html>
+                                            <form class="form-horizontal" role="form">
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 control-label" for="teacher_name">Teacher Name</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" class="form-control" value="<?php if(isset($ob["teacher_name"])){echo $ob["teacher_name"];}?>" id="teacher_name" name="teacher_name">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 control-label" for="teacher_subject">Teachers Subject</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="text" id="teacher_subject" name="teacher_subject" value="<?php if(isset($ob["teacher_subject"])){echo $ob["teacher_subject"];}?>" class="form-control" placeholder="teacher_subject">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="col-sm-2 control-label" for="image_name">Image</label>
+                                                    <div class="col-sm-10">
+                                                        <input type="file" class="form-control" name="image" id="image">
+                                                        <div><img src="teachers_images/<?php if(isset($ob["image_name"])){ echo $ob['image_name'];}?>" width="80" height="50"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group row">
+                                                    <div class="col-sm-10">
+                                                      <input type="submit" value="submit" name="update_teacher">
+                                                      <input type="hidden" value="" name="$teacher_id">
+                                                      
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div> <!-- card-body -->
+                                    </div> <!-- card -->
+                                </div> <!-- col -->
+                            </div> 
+                              </form><!-- End row -->
+
+
+
+                        </div><!-- container-fluid -->
+
+                    </div> <!-- Page content Wrapper -->
+
+                </div> <!-- content -->
+
+                <footer class="footer">
+                    © 2016 - 2018 Appzia - All Rights Reserved.
+                </footer>
+
+            </div>
+            <!-- End Right content here -->
+
+            <?php include_once('footer.php');?>
