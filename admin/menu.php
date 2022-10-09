@@ -20,6 +20,12 @@
                                     <li><a href="teachers.php">See Teachers</a></li>
                                   
                                 </ul>
+                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-album"></i> <span> Classes </span> <span class="float-right"><i class="mdi mdi-plus"></i></span></a>
+                                <ul class="list-unstyled">
+                                    <li><a href="classes.php">See Classes</a></li>
+                                    <li><a href="add_classes.php">Add Classes</a></li>
+                                  
+                                </ul>
                             </li>
 
                             

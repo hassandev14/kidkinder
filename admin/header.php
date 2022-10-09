@@ -115,7 +115,7 @@
                                     <li><a href="javascript:void(0)" class="dropdown-item"><span class="badge badge-success float-right">5</span> Settings </a></li>
                                     <li><a href="javascript:void(0)" class="dropdown-item"> Lock screen</a></li>
                                     <li class="dropdown-divider"></li>
-                                    <li><a href="javascript:void(0)" class="dropdown-item"> Logout</a></li>
+                                    <li><a href="logout.php" class="dropdown-item"> Logout</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -124,5 +124,5 @@
             </div>
             <!-- Top Bar End -->
             <?php
-            include_once('menu.php');
+             include_once('menu.php');
             ?>

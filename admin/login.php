@@ -1,8 +1,25 @@
-<?php session_start();
+<?php
+include "function.php";
+session_start();
+d($_SESSION);
 if(isset($_SESSION['admin']))
 {
 
 	header("Location:index.php");
+}
+if(isset($_REQUEST["password"]))
+{
+    $password = md5($_REQUEST['password']);
+    $username = $_REQUEST['username'];
+    $result = login($username,$password);
+    if($result!="")
+    {
+        $_SESSION['admin']=$result['admin_id'];
+        $_SESSION['username']=$result['username'];
+        header ("location:index.php");
+    }else{
+        echo "invalid ussername or password";
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -40,11 +57,11 @@ if(isset($_SESSION['admin']))
                     </h3>
                     <h4 class="text-muted text-center m-t-0"><b>Sign In</b></h4>
 
-                    <form class="form-horizontal m-t-20" action="https://themesdesign.in/appzia/index.html">
+                    <form class="form-horizontal m-t-20" action="login.php"  enctype="multipart/form-data" method="POST">
 
                         <div class="form-group">
                             <div class="col-12">
-                                <input class="form-control" type="text" required="" placeholder="Name" name="name">
+                                <input class="form-control" type="text" required="" placeholder="Name" name="username">
                             </div>
                         </div>
 

@@ -1,3 +1,11 @@
+<?php
+include "function.php";
+if(isset($_REQUEST["add_admin"]))
+{
+    //dd($_REQUEST);
+     add_admin();
+}
+?>
 <!DOCTYPE html>
 <html>
     
@@ -33,7 +41,7 @@
                     </h3>
                     <h4 class="text-muted text-center m-t-0"><b>Sign Up</b></h4>
 
-                    <form class="form-horizontal m-t-20" action="function.php"  enctype="multipart/form-data" method="POST">
+                    <form class="form-horizontal m-t-20" action="signup.php"  enctype="multipart/form-data" method="POST">
 
                         <div class="form-group">
                             <div class="col-12">
@@ -67,7 +75,7 @@
 
                         <div class="form-group text-center m-t-40">
                             <div class="col-12">
-                                <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Register</button>
+                                <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit" name="add_admin">Register</button>
                             </div>
                         </div>
 
