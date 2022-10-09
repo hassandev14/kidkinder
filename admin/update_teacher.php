@@ -3,9 +3,9 @@
  if(isset($_REQUEST["teacher_id"]))
  {  
    $teacher_id = $_REQUEST["teacher_id"];
-   $ob = update_teacher($teacher_id);
-  //dd($teacher_id);
- }
+   $ob = get_teacher_by_id($teacher_id);
+   
+}
 ?>
 <!-- Start right Content here -->
 
@@ -53,7 +53,7 @@
                                                 <div class="form-group row">
                                                     <div class="col-sm-10">
                                                       <input type="submit" value="submit" name="update_teacher">
-                                                      <input type="hidden" value="" name="$teacher_id">
+                                                      <input type="hidden" name="teacher_id" value="<?php if(isset($teacher_id)){ echo $teacher_id;} ?>">
                                                       
                                                     </div>
                                                 </div>

@@ -6,6 +6,7 @@ if(isset($_REQUEST["add_teacher"]))
 }
 if(isset($_REQUEST["update_teacher"]))
 {
+    
     $teacher_id = $_REQUEST["teacher_id"];
     $ob = update_teacher($teacher_id);
 }

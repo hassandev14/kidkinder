@@ -88,7 +88,7 @@ function update_teacher($teacher_id){
 
     global $conn;
     $image_name ="";
-
+   //dd($_REQUEST);
     $teacher_name = $_POST['teacher_name'];
     $teacher_subject = $_POST['teacher_subject'];
     $image = $_FILES['image']['name'];
@@ -121,7 +121,7 @@ if($conn === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
-$sql = "UPDATE teacher SET teacher_name='$teacher_name' , teacher_subject='$teacher_subject' ,image_name= $image_name WHERE teacher_id=$teacher_id";
+echo $sql = "UPDATE teacher SET teacher_name='$teacher_name' , teacher_subject='$teacher_subject' ,image_name= '$image_name' WHERE teacher_id=$teacher_id";
  
 if(mysqli_query($conn, $sql)){
     echo "Records inserted successfully.";
