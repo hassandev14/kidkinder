@@ -33,23 +33,23 @@
                     </h3>
                     <h4 class="text-muted text-center m-t-0"><b>Sign Up</b></h4>
 
-                    <form class="form-horizontal m-t-20" action="https://themesdesign.in/appzia/index.html">
+                    <form class="form-horizontal m-t-20" action="function.php"  enctype="multipart/form-data" method="POST">
 
                         <div class="form-group">
                             <div class="col-12">
-                                <input class="form-control" type="email" required="" placeholder="Email">
+                                <input class="form-control" type="text" required="" placeholder="Name" name="name">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-12">
-                                <input class="form-control" type="text" required="" placeholder="Username">
+                                <input class="form-control" type="text" required="" placeholder="Username" name="username">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-12">
-                                <input class="form-control" type="password" required="" placeholder="Password">
+                                <input class="form-control" type="password" required="" placeholder="Password" name="password">
                             </div>
                         </div>
 

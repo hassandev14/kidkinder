@@ -3,7 +3,8 @@ if(isset($_SESSION['admin']))
 {
 
 	header("Location:index.php");
-}?>
+}
+?>
 <!DOCTYPE html>
 <html>
     
@@ -43,13 +44,13 @@ if(isset($_SESSION['admin']))
 
                         <div class="form-group">
                             <div class="col-12">
-                                <input class="form-control" type="text" required="" placeholder="Username">
+                                <input class="form-control" type="text" required="" placeholder="Name" name="name">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="col-12">
-                                <input class="form-control" type="password" required="" placeholder="Password">
+                                <input class="form-control" type="password" required="" placeholder="Password" name="password">
                             </div>
                         </div>
 

@@ -28,6 +28,25 @@ function get_db_data($ob)
      return $data;
 
 }
+///////////////////////////////////////////////////////login page/////////////////////////////////////////////////////////////////////////////
+if(isset($_REQUEST["password"]))
+{
+    //dd($_REQUEST);
+     add_admin();
+}
+function add_admin()
+{
+    global $conn;
+    //dd($_REQUEST);
+    $name        =   $_POST['name'];
+    $username    =   $_POST['username'];
+    $password    =   $_POST['password'];
+    $password    =   md5($password);
+
+     $sql = "INSERT INTO admin SET `name`='$name', username ='$username', `password`='$password '";
+    mysqli_query($conn, $sql);
+}
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function get_teacher_by_id($teacher_id)
 {
