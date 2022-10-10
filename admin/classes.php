@@ -7,7 +7,7 @@ if(isset($_REQUEST["add_classes"]))
 if(isset($_REQUEST["update_classes"]))
 {
     
-    $teacher_id = $_REQUEST["classes_id"];
+    $classes_id = $_REQUEST["classes_id"];
     $ob = update_classes($classes_id);
 }
 
@@ -52,15 +52,18 @@ if(isset($_REQUEST["update_classes"]))
                                                     <tbody>
                                                         <?php
                                                         foreach($objects as $object)
-                                                        {?>
+                                                        {
+                                                           d($object); 
+                                                            ?>
                                                     <tr>
                                                         <td><?php echo $object["title"];?></td>
                                                         <td><?php echo $object["desc"];?></td>
                                                         <td><?php echo $object["tution_fee"];?></td>
-                                                        <td><img src="classes_images/<?php  echo $object['image_name'];?>" width="80" height="50"></td>
+                                                        <td><img src="classes_images/<?php echo $object["image_name"] ?>" width="80" height="50"></td>
                                                         <td>
                                                       <a href="update_classes.php?classes_id=<?php echo $object["classes_id"];?>"><i class= "fas fa-edit"></i></a> 
-                                                      <a href="delete_classes.php?classes_id=<?php echo $object["classes_id"];?>&delete=1"><i class="fas fa-trash"></i></a> 
+                                                      <a href="delete_classes.php?classes_id=<?php echo $object["classes_id"];?>"><i class="fas fa-trash"></i></a> 
+                                                     
                                                     </td>
                                                     </tr>
                                                     <?php }

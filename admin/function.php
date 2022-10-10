@@ -71,8 +71,8 @@ function get_teacher_by_id($teacher_id)
     $result = mysqli_fetch_assoc($ob);
     return $result;
 }
-function add_teacher(){
-
+function add_teacher()
+{
     global $conn;
     $image_name ="";
 
@@ -118,8 +118,8 @@ if(mysqli_query($conn, $sql)){
     echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
 }
 }
-function update_teacher($teacher_id){
-
+function update_teacher($teacher_id)
+{
     global $conn;
     $image_name ="";
    //dd($_REQUEST);
@@ -185,12 +185,54 @@ function add_classes(){
     $image_name ="";
 
     $title = $_POST['title'];
-    $desc = $_POST['desc'];
-    $age = $_POST['age'];
-    $seats = $_POST['seats'];
-    $time = $_POST['time'];
-    $tution_fee = $_POST['tution_fee'];
+    $desc = ($_POST['desc']=='')? NULL: $_POST['desc'];
+    $age =  ($_POST['age']=='')? NULL: $_POST['age'];
+    $seats = ($_POST['seats']='')? NULL : $_POST['seats'];
+    $time = ($_POST['time']=='')? NULL : $_POST['time'];
+    $tution_fee = ($_POST['tution_fee']='')? NULL : $_POST['time'];
     $image = $_FILES['image']['name'];
+    if($image!=""){
+    $errors= array();
+  
+    $image_name = $_FILES['image']['name'];
+    $tmp = explode(".",$image_name);
+    $image_name = $tmp[0]."-".time().".".$tmp[1];
+    
+    $file_size = $_FILES['image']['size'];
+    $file_tmp  = $_FILES['image']['tmp_name'];
+    $file_type =  $_FILES['image']['type'];
+    
+    if($file_size > 2097152){
+       $errors[]='File size must be excately 2 MB';
+    }
+    
+    if(empty($errors)==true){
+   move_uploaded_file($file_tmp,"classes_images/".$image_name);
+  
+       echo "Success";
+    }else{
+       print_r($errors);
+    }
+  }
+  
+   echo $sql = "INSERT INTO classes SET title='$title' , `desc`='$desc' ,age= '$age',seats='$seats' , 
+  `time`='$time' , tution_fee= '$tution_fee', image_name= '$image_name'";
+ 
+     mysqli_query($conn, $sql);
+     //header("Location: http://localhost/website/admin/classes.php");
+}
+function update_classes($classes_id)
+{
+    global $conn;
+    $image_name ="";
+   //dd($_REQUEST);
+   $title = $_POST['title'];
+   $desc = $_POST['desc'];
+   $age = $_POST['age'];
+   $seats = $_POST['seats'];
+   $time = $_POST['time'];
+   $tution_fee = $_POST['tution_fee'];
+   $image = $_FILES['image']['name'];
 
 if($image!=""){
     $errors= array();
@@ -220,13 +262,18 @@ if($conn === false){
     die("ERROR: Could not connect. " . mysqli_connect_error());
 }
 
-  $sql = "INSERT INTO classes (title, `desc` ,age, seats, `time`, tution_fee, image_name)
- VALUES ('$title', '$desc', '$age', '$seats','$time', '$tution_fee', '$image')";
+echo $sql = "UPDATE classes SET title='$title' , `desc`='$desc' ,age= '$age',seats='$seats' , 
+`time`='$time' , tution_fee= '$tution_fee', image_name= '$image_name' WHERE classes_id=$classes_id";
  
 if(mysqli_query($conn, $sql)){
-    //header("Location: http://localhost/website/classes.php");
-} else{
-    echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+    echo "Records inserted successfully.";
+ //   header("Location: http://localhost/website/teacher.php");
 }
+}
+function delete_calsses($classes_id)
+{
+     global $conn;
+    $sql = "DELETE FROM classes WHERE classes_id=$classes_id";
+    mysqli_query($conn, $sql);
 }
 ?>
