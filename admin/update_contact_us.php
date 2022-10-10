@@ -2,6 +2,7 @@
 <?php include_once('header.php'); 
 
    $ob = get_contact_by_id();  
+   
 ?>
 <!-- Start right Content here -->
 
