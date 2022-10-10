@@ -28,8 +28,16 @@ function get_db_data($ob)
      return $data;
 
 }
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++login start here++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+function get_single_data($ob)
+{
+     $data=array();
+     if ($ob->num_rows > 0) {
+        $data = $ob->fetch_assoc();	
+    }
+     return $data;
 
+}
+//+++++++++++++++++++++++++++++++++++++++++++++++++++++++login start here++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 function get_admin_data()
 { 
     global $conn;
@@ -59,7 +67,6 @@ function add_admin()
      $sql = "INSERT INTO admin SET `name`='$name', username ='$username', `password`='$password '";
     mysqli_query($conn, $sql);
 }
-
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++login end here++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++teacher start here++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
@@ -179,7 +186,8 @@ function get_classes_by_id($classes_id)
     $result = mysqli_fetch_assoc($ob);
     return $result;
 }
-function add_classes(){
+function add_classes()
+{
 
     global $conn;
     $image_name ="";
@@ -275,5 +283,41 @@ function delete_calsses($classes_id)
      global $conn;
     $sql = "DELETE FROM classes WHERE classes_id=$classes_id";
     mysqli_query($conn, $sql);
+}
+///++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++  classess end here ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+
+///++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++  contact start here ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
+if(isset($_REQUEST["update_contact"]))
+{
+    
+    $contact_id = $_REQUEST["contact_id"];
+    $ob = update_contact_us($contact_id);
+}
+function get_contact_by_id()
+{
+    global $conn;
+    $sql =  "SELECT * FROM contact_us WHERE contact_id=1";
+    $ob = mysqli_query($conn, $sql);
+    $result = mysqli_fetch_assoc($ob);
+    return $result;
+}
+function update_contact_us($contact_id)
+{
+    global $conn;
+    $image_name ="";
+
+   $address = $_POST['address'];
+   $phone = $_POST['phone'];
+   $email = $_POST['email'];
+   $desc = $_POST['desc'];
+   $opening_hour = $_POST['opening_hour'];
+
+  echo $sql = "UPDATE contact_us SET address='$address',  `desc`='$desc', `email`='$email', phone= '$phone',
+  opening_hour='$opening_hour' WHERE contact_id=$contact_id";
+ 
+if(mysqli_query($conn, $sql)){
+    echo "Records inserted successfully.";
+ //   header("Location: http://localhost/website/teacher.php");
+}
 }
 ?>
