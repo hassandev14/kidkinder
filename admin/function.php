@@ -195,7 +195,7 @@ function add_classes()
     $title = $_POST['title'];
     $desc = ($_POST['desc']=='')? NULL: $_POST['desc'];
     $age =  ($_POST['age']=='')? NULL: $_POST['age'];
-    $seats = ($_POST['seats']='')? NULL : $_POST['seats'];
+    $seats = ($_POST['seats']=='')? NULL : $_POST['seats'];
     $time = ($_POST['time']=='')? NULL : $_POST['time'];
     $tution_fee = ($_POST['tution_fee']='')? NULL : $_POST['time'];
     $image = $_FILES['image']['name'];
